@@ -9,11 +9,11 @@ df = pd.read_csv("data/sample_data.csv")
 
 # Для вопросов без difficulty предсказываем
 for index, row in df.iterrows():
-    if pd.isna(row['difficulty']) or row['difficulty'] == '':
-        question = row['question']
+    if pd.isna(row["difficulty"]) or row["difficulty"] == "":
+        question = row["question"]
         vec = vectorizer.transform([question])
         prediction = model.predict(vec)
-        df.at[index, 'difficulty'] = prediction[0]
+        df.at[index, "difficulty"] = prediction[0]
         print(f"Вопрос: {question} -> Сложность: {prediction[0]}")
 
 # Сохраняем обновленный CSV
