@@ -1,0 +1,17 @@
+name: Daily Report
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - run: echo "Model checked on $(date)" > docs/report.md
+    - uses: actions/upload-artifact@v4
+      with:
+        name: daily-report
+        path: docs/report.md
